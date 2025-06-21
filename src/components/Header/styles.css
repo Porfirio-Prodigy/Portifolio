@@ -1,0 +1,136 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: var(--bg-dark);
+    z-index: 10;
+}
+
+.header-container {
+    max-width: 1280px;
+    width: 100%;
+    height: 72px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.type-logo {
+  font-family: var(--michroma, monospace);
+  font-size: 26px;
+  color: var(--gray-50);
+
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--gray-50);
+  width: 0ch;
+  display: inline-block;
+
+  animation: typing 5s steps(12) infinite, blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  0%   { width: 0ch; }
+  50%  { width: 12ch; }
+  100% { width: 0ch; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50%      { border-color: var(--gray-50); }
+}
+
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.navigation .nav-item {
+    font-family: var(--montserrat);
+    position: relative; 
+    text-decoration: none;
+    color: #FFF;
+}
+
+.navigation .nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: #FFF;
+  transition: width 0.4s ease-in-out;
+}
+
+.navigation .nav-item:hover::after {
+  width: 100%;
+}
+
+.menu-mob {
+  display: none;
+}
+
+@media (max-width: 1080px) {
+  .header-container {
+    padding: 0 16px;
+  }
+
+  .navigation {
+    display: none;
+  }
+  .menu-mob {
+    display: flex;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    scale: .8;
+  }
+
+  .hamburger .bar {
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger.open .top {
+    transform: translateX(-20px) translateY(25px) rotate(45deg);
+  }
+
+  .hamburger.open .middle {
+    opacity: 0;
+  }
+
+  .hamburger.open .bottom {
+    transform: translateX(-12px) translateY(-20px) rotate(-45deg);
+  }
+
+  .menu-toogle {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .header {
+    background: var(--bg-dark);
+  }
+
+  .navigation.open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    position: fixed;
+    background: var(--bg-dark);
+    opacity: .7;
+    padding: 24px 16px;
+    top: 72px;
+    left: 0;
+    z-index: 10;
+  }
+}
